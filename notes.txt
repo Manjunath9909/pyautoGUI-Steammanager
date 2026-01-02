@@ -1,6 +1,8 @@
 launch steam
 steam family button location 1473, 18  RGB (151, 187, 105)
 steam family input field 928, 533  RGB(50, 53, 61)
+
+
 steam library search bar 174, 178  RBG(29,32,38)
 frist game in library after search 204, 251  RGB(88, 111, 150)
 Steam play button - game page 582, 433  

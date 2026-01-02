@@ -1,32 +1,32 @@
 import pyautogui as pgui
 import time
+from . import essentials
+from harness.essentials import position
 
 def run(appname, key):
-    
-    familybuttonRBG = (151, 187, 105)
-    familybuttonPosX = 1473
-    familybuttonPosy = 18
+    if not essentials.isRunning(appname + ".exe"):
+        familybuttonRBG = (151, 187, 105)
+        familybuttonPos = position(1473, 18)
+        familyinputPos = position(928, 533)
 
-    familyinputPosX = 928
-    familyinputPosY = 533
-
-    pgui.press('win')
-    time.sleep(1)
-    pgui.write(appname)
-    time.sleep(1)
-    pgui.press('enter')
-    pgui.moveTo(familybuttonPosX, familybuttonPosy)
-    while True:
-        if pgui.pixelMatchesColor(familybuttonPosX, familybuttonPosy, familybuttonRBG):
-            print("color matched")
-            break
-        else:
-            time.sleep(2)
-    time.sleep(2)
-    pgui.click()
-    time.sleep(2)
-    pgui.click(familyinputPosX, familyinputPosY)
-    pgui.write(key)
-    pgui.press('enter')
+        pgui.press('win')
+        time.sleep(1)
+        pgui.write(appname)
+        time.sleep(1)
+        pgui.press('enter')
+        pgui.moveTo(familybuttonPos.x, familybuttonPos.y)
+        while True:
+            if pgui.pixelMatchesColor(familybuttonPos.x, familybuttonPos.y, familybuttonRBG):
+                break
+            else:
+                time.sleep(2)
+        time.sleep(1)
+        pgui.click()
+        time.sleep(2)
+        pgui.click(familyinputPos.x, familyinputPos.y)
+        pgui.write(key)
+        pgui.press('enter')
+    else:
+        print("Steam is already running")
 
     
